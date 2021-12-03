@@ -48,45 +48,45 @@ $max_mini: 320px;
 //////////////////////////////////////////////////
 .sp{
 	@include no-sp{
-		display: none;
+		display: none!important;
 	}
 }
 .no-sp{
 	@include sp{
-		display: none;
+		display: none!important;
 	}	
 }
 .tb{
 	@include pc{
-		display: none;
+		display: none!important;
 	}
 	@include sp{
-		display: none;
+		display: none!important;
 	}
 }
 .no-tb{
 	@include tb{
-		display: none;
+		display: none!important;
 	}
 }
 .pc{
 	@include no-pc{
-		display: none;
+		display: none!important;
 	}
 }
 .no-pc{
 	@include pc{
-		display: none;
+		display: none!important;
 	}
 }
 .mini{
 	@include no-mini{
-		display: none;
+		display: none!important;
 	}
 }
 .no-mini{
 	@include mini{
-		display: none;
+		display: none!important;
 	}
 }
 //////////////////////////////////////////////////
@@ -109,7 +109,6 @@ h1.mod-heading{
 	*{
 		box-sizing: border-box;
 	}
-	position: relative;
 	background-image: url(img/body-bg.jpg);
 	background-size: 100% auto;
 	padding-bottom: 200px;
@@ -128,44 +127,49 @@ h1.mod-heading{
 		}
 	}
 }
-section{
-	$content-width:900px;
+$content-width:900px;
+#intro{
+	@include no-sp{
+		padding: 0 20px;
+	}
+	@include sp{
+		padding: 0!important;
+	}
+	img{
+		width: 100%;
+	}
+	.text{
+		margin: 2em auto 0;
+		padding: 1em 1.5em;
+		background-color: #fff;
+		@include no-sp{
+			width: $content-width;
+			font-size: 24px;
+		}
+		@include sp{
+			font-size: 15px;
+		}
+		li{
+			list-style: none;
+			font-weight: bold;
+			&::before{
+				content: "※";
+			}
+		}
+	}
+}
+.brand{
 	$mark-size: 240px;
 	$mark-size-sp: 80px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	@include no-sp{
-		padding: 170px calc(50% - 1056px / 2) 0;
+		padding: 90px calc(50% - 1056px / 2) 0;
+		margin: 80px auto 0;
 	}
 	@include sp{
-		padding-top: 60px;
-	}
-	&#intro{
-		@include no-sp{
-			padding: 0 20px;
-		}
-		@include sp{
-			padding: 0!important;
-		}
-		img{
-			width: 100%;
-		}
-		.text{
-			margin-top: 2em;
-			padding: 1em 1.5em;
-			background-color: #fff;
-			@include no-sp{
-				width: $content-width;
-				font-size: 24px;
-			}
-			li{
-				list-style: none;
-				&::before{
-					content: "※";
-				}
-			}
-		}
+		margin-top: 60px;
 	}
 	.panel{
 		position: relative;
@@ -178,11 +182,11 @@ section{
 		border-radius: 40px;
 		@include no-sp{
 			width: $content-width;
-			margin: auto;
 			padding: 3em 0;
 			box-shadow: 8px 8px 0 0 #646464;
 		}
 		@include sp{
+		margin-top: 10px;
 			padding: 45px 0;
 			box-shadow: 4px 4px 0 0 #646464;
 		}
@@ -364,67 +368,81 @@ section{
 //////////////////////////////////////////////////
 //固定ボタン
 //////////////////////////////////////////////////
+#brands{
+	position: relative;
+}
 #brand-link{
 	position: sticky;
-	bottom: 1em;
 	left: 0;
-	justify-content: flex-end;
+	display: flex;
+	align-items: flex-end;
 	width: 100%;
-	height: 250px;
-	padding: 0;
 	.buttons{
 		position: relative;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-around;
 		align-items: flex-end;
+		justify-content: space-around;
 		margin: 0 auto;
 		background-color: #fff;
 		border: 3px solid #E03B57;
-		@include no-sp{
-			width: 1024px;
-			height: 150px;
-			padding-bottom: 16px;
-			border-radius: 16px;
-		}
-		@include sp{
-			width: 100%;
-			height: 180px;
-			padding-bottom: 8px;
-			border-radius: 16px 16px 0 0;
-		}
-		.brand-link-p{
-			$text-height: 50px;
-			position: absolute;
-			left: 0;
-			right: 0;
-			width: auto;
-			margin: auto;
-			@include no-sp{
-				top:calc(-1 * #{$text-height} / 2);
-				height: $text-height;
-			}
-			@include sp{
-				top: -1.5em;
-			}
-		}
+	}
+	.brand-link-p{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		margin: auto;
 	}
 	a{
 		display: block;
 		transition: 0.2s;
 		&:hover{
-			opacity: .8;
+			opacity: .6;
 			transition: 0.2s;
 		}
 	}
-	.brand-mark{
-		@include no-sp{
+	@include no-sp{
+		height: 170px;
+		margin-top: 50px;
+		bottom: 20px;
+		.buttons{
+			width: 960px;
+			height: 150px;
+			padding-bottom: 16px;
+			border-radius: 16px;
+		}
+		.brand-link-p{
+			width: 500px;
+		}
+		.brand-mark{
 			width: 100px;
 			height: 100px;
 		}
-		@include sp{
-			width: 80px;
-			height: 80px;
+	}
+	@include sp{
+		$button-height: 60px;
+		height: 160px;
+		margin-top: 24px;
+		bottom: 60px;
+		.buttons{
+			width: 100%;
+			padding-top: 15px;
+			padding-bottom: 5px;
+			border-radius: 16px 16px 0 0;
+		}
+		.sp_row{
+			display: flex;
+			justify-content: center;
+			width: 100%;
+		}
+		a{
+			margin: 0 calc((25% - #{$button-height}) / 2);
+		}
+		.brand-mark{
+			width: $button-height;
+			height: $button-height;
 		}
 	}
 }

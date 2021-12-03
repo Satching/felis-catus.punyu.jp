@@ -38,33 +38,42 @@
   padding-bottom: 0; }
 
 .mod-wrap {
-  width: 100%;
-  padding-top: 25px; }
+  width: 100%; }
+  @media (max-width: 767px) {
+    .mod-wrap {
+      padding: 0; } }
 
-h1.mod-heading {
-  margin-top: 0; }
+@media (max-width: 767px) {
+  h1.mod-heading {
+    width: calc(100% - 15px * 2);
+    margin-left: 15px;
+    margin-right: 15px; }
 
-.mod-wrap {
+  .area-footer ._btn-pagetop {
+    bottom: 170px; } }
+.mod-wrap * {
+  box-sizing: border-box; }
+.mod-wrap img {
+  display: block; }
+  @media (max-width: 767px) {
+    .mod-wrap img.no-sp {
+      display: none; } }
+  @media (min-width: 768px) {
+    .mod-wrap img.sp {
+      display: none; } }
+
+.bg {
+  padding-top: 20px;
   background-image: url(img/body-bg.jpg);
-  background-size: 100% auto;
-  padding-bottom: 200px; }
-  .mod-wrap * {
-    box-sizing: border-box; }
-  .mod-wrap img {
-    display: block; }
-    @media (max-width: 767px) {
-      .mod-wrap img.no-sp {
-        display: none; } }
-    @media (min-width: 768px) {
-      .mod-wrap img.sp {
-        display: none; } }
+  background-size: 100% auto; }
 
 @media (min-width: 768px) {
   #intro {
     padding: 0 20px; } }
 @media (max-width: 767px) {
   #intro {
-    padding: 0 !important; } }
+    padding-left: 15px;
+    padding-right: 15px; } }
 #intro img {
   width: 100%; }
 #intro .text {
@@ -94,7 +103,9 @@ h1.mod-heading {
       margin: 80px auto 0; } }
   @media (max-width: 767px) {
     .brand {
-      margin-top: 60px; } }
+      margin-top: 60px;
+      padding-left: 15px;
+      padding-right: 15px; } }
   .brand .panel {
     position: relative;
     display: flex;
@@ -124,7 +135,7 @@ h1.mod-heading {
           height: 240px; } }
       @media (max-width: 767px) {
         .brand .panel .brand-mark {
-          top: -20px;
+          top: -24px;
           left: 0;
           width: 80px;
           height: 80px; } }
@@ -225,6 +236,14 @@ h1.mod-heading {
 
 #brands {
   position: relative; }
+  #brands .brand#gusto {
+    margin-top: 0; }
+    @media (min-width: 768px) {
+      #brands .brand#gusto {
+        padding-top: 360px; } }
+    @media (max-width: 767px) {
+      #brands .brand#gusto {
+        padding-top: 60px; } }
 
 #brand-link {
   position: sticky;
@@ -273,7 +292,7 @@ h1.mod-heading {
     #brand-link {
       height: 160px;
       margin-top: 24px;
-      bottom: 60px; }
+      bottom: 0; }
       #brand-link .buttons {
         width: 100%;
         padding-top: 15px;
